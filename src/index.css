@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased selection:bg-zinc-700 selection:text-white;
+    /* Clean iOS Black Background */
+    background-color: #000000;
+    /* Prevent pull-to-refresh on mobile PWA */
+    overscroll-behavior-y: none;
+  }
+  
+  /* Safe area padding for mobile devices (notch) */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  html, body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    overscroll-behavior: none; /* Prevent bounce/rubber-banding */
+    touch-action: pan-x pan-y; /* Allow scrolling but prevent zooming */
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-zinc-900 border border-zinc-800 shadow-none rounded-[32px];
+  }
+  .glass-card {
+    @apply bg-zinc-900 border border-zinc-800 shadow-none active:bg-zinc-800 transition-colors duration-200 rounded-[24px];
+  }
+  .glass-input {
+    @apply bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:border-zinc-600 focus:ring-0 transition-all rounded-full;
+  }
+  .glass-button {
+    @apply bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white transition-all active:scale-95 rounded-full;
+  }
+}
+
